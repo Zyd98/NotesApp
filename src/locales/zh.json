@@ -1,0 +1,53 @@
+{
+  "home_screen": {
+    "home": "首页",
+    "recently_created_notes": "最近创建的笔记",
+    "delete_note": "删除笔记",
+    "are_you_sure_you_want_to_delete_this_note": "您确定要删除这条笔记吗？",
+    "cancel": "取消",
+    "delete": "删除"
+  },
+  "settings_screen": {
+    "delete_all_notes_title": "删除所有笔记",
+    "delete_all_notes_message": "您确定要删除所有笔记吗？此操作无法撤销。",
+    "cancel": "取消",
+    "delete": "删除",
+    "success": "成功",
+    "all_notes_deleted": "所有笔记已被删除",
+    "settings": "设置",
+    "online_customer": "在线客服",
+    "user_agreement": "用户协议",
+    "privacy_policy": "隐私政策",
+    "change_language": "更改语言",
+    "about_us": "关于我们",
+    "delete_all_notes": "删除所有笔记",
+    "select_language": "选择语言",
+    "english": "英语",
+    "chinese": "中文"
+  },
+  "new_note_screen": {
+    "error": "错误",
+    "select_category_and_content": "请选择一个类别并输入内容。",
+    "content_exceeds_limit": "内容超过200个字符。",
+    "new_note": "新笔记",
+    "choose_category": "选择一个类别",
+    "input_note_content": "请输入笔记内容",
+    "save": "保存"
+  },
+  "edit_note_screen": {
+    "edit_note": "编辑笔记",
+    "content_cannot_be_empty": "内容不能为空。",
+    "save": "保存",
+    "error": "错误"
+  },
+  "summary_screen": {
+    "summary": "总结",
+    "topic_total_records": "该主题共有 {{count}} 条记录。",
+    "detail": "详情"
+  },
+  "category": {
+    "Work and Study": "工作与学习",
+    "Life": "生活",
+    "Health and Wellness": "健康与保健"
+  }
+}

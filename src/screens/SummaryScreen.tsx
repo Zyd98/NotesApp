@@ -1,15 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
 import { useSelector } from 'react-redux';
-import { useNavigation } from '@react-navigation/native';
 import { RootState } from '../redux/store';
 import { Category } from '../enums/CategoryEnum';
 import { getCategoryLabel } from '../utils/categoryUtils';
 import { Note } from '../redux/reducers/notesReducer';
-import { Ionicons } from '@expo/vector-icons';
+import Colors from '../theme';
+import { useTranslation } from 'react-i18next';
 
 const SummaryScreen = () => {
-  const navigation = useNavigation();
+  const { t } = useTranslation();
   const notes = useSelector((state: RootState) => state.notes.notes);
 
   // Group notes by category
@@ -32,12 +32,12 @@ const SummaryScreen = () => {
       <View style={styles.cardContent}>
         <Image source={categoryIcons[categoryId as Category]} style={styles.icon} />
         <View style={styles.textContainer}>
-          <Text style={styles.cardTitle}>{getCategoryLabel(categoryId as Category)}</Text>
-          <Text style={styles.cardSubtitle}>This topic has a total of {notes.length} records.</Text>
+          <Text style={styles.cardTitle}>{t(`category.${getCategoryLabel(categoryId as Category)}`)}</Text>
+          <Text style={styles.cardSubtitle}>{t('summary_screen.topic_total_records', { count: notes.length })}</Text>
         </View>
       </View>
       <TouchableOpacity style={styles.detailButton}>
-        <Text style={styles.detailButtonText}>Detail</Text>
+        <Text style={styles.detailButtonText}>{t('summary_screen.detail')}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -45,7 +45,7 @@ const SummaryScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Summary</Text>
+        <Text style={styles.headerText}>{t('summary_screen.summary')}</Text>
         <Image source={require('./../../assets/robot_icon2.png')} style={styles.headerIcon} />
       </View>
       <FlatList
@@ -61,8 +61,8 @@ const SummaryScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e014d',
-    marginTop:30
+    backgroundColor: Colors.primaryBackground,
+    marginTop: 30,
   },
   header: {
     flexDirection: 'row',
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   headerText: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 28,
     fontWeight: 'bold',
   },
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   card: {
-    backgroundColor: '#2b1355',
+    backgroundColor: Colors.secondaryBackground,
     borderRadius: 12,
     marginVertical: 10,
     padding: 15,
@@ -114,23 +114,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   cardTitle: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 5,
   },
   cardSubtitle: {
-    color: '#d9d8f3',
+    color: Colors.textPrimary,
     fontSize: 14,
   },
   detailButton: {
-    backgroundColor: '#ff6be6',
+    backgroundColor: Colors.accent,
     paddingVertical: 5,
     paddingHorizontal: 15,
     borderRadius: 8,
   },
   detailButtonText: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontWeight: 'bold',
     fontSize: 14,
   },

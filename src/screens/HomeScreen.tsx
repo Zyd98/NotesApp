@@ -14,12 +14,15 @@ import { deleteNote } from '../redux/reducers/notesReducer';
 import { RootState } from '../redux/store';
 import { getCategoryLabel } from '../utils/categoryUtils';
 import { Category } from '../enums/CategoryEnum';
+import { useTranslation } from 'react-i18next';
+import Colors from '../theme';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
 };
 
 const HomeScreen: React.FC<Props> = ({ navigation }) => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const notes = useSelector((state: RootState) => state.notes.notes);
 
@@ -40,10 +43,10 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
   }, {} as Record<string, typeof notes>);
 
   const handleDeleteNote = (noteId: string) => {
-    Alert.alert('Delete Note', 'Are you sure you want to delete this note?', [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert(t('home_screen.delete_note'), t('home_screen.are_you_sure_you_want_to_delete_this_note'), [
+      { text: t('home_screen.cancel'), style: 'cancel' },
       {
-        text: 'Delete',
+        text: t('home_screen.delete'),
         style: 'destructive',
         onPress: () => dispatch(deleteNote(noteId)),
       },
@@ -54,9 +57,9 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
     <View style={styles.container}>
 
       <View style={styles.header}>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>{t('home_screen.home')}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('Settings')}>
-          <Ionicons name="settings-outline" size={24} color="white" />
+          <Ionicons name="settings-outline" size={24} color={Colors.textPrimary} />
         </TouchableOpacity>
       </View>
       <View style={styles.content}>
@@ -64,9 +67,9 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
       <Ionicons
               name={'time-outline'}
               size={20}
-              color="gray"
+              color={Colors.textPrimary}
             />
-      <Text style={styles.subtitle}>Recently created notes</Text>
+      <Text style={styles.subtitle}>{t('home_screen.recently_created_notes')}</Text>
       </View>
       {Object.entries(notesByCategory).map(([categoryId, notes]) => (
         <View key={categoryId} style={styles.categorySection}>
@@ -74,7 +77,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
             <Ionicons
               name={categoryIcons[categoryId as Category] as any || 'bookmark-outline'}
               size={20}
-              color="#ff6be6"
+              color={Colors.accent}
             />
             <Text style={styles.categoryTitle}>
               {getCategoryLabel(categoryId as Category)}
@@ -87,12 +90,15 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
               <TouchableOpacity
                 style={styles.noteContainer}
                 onLongPress={() => handleDeleteNote(item.id)}
+                onPress={() => navigation.navigate('EditNote', { noteId: item.id })}
               >
-                <Text style={styles.noteText}>{item.content}</Text>
+                <Text style={styles.noteText}>
+                  {item.content.slice(0, 20)}{item.content.length > 20 ? '...' : ''}
+                </Text>
                 <Ionicons
                   name="chevron-forward-outline"
                   size={20}
-                  color="#ff6be6"
+                  color={Colors.accent}
                 />
               </TouchableOpacity>
             )}
@@ -107,12 +113,12 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e014d',
+    backgroundColor: Colors.primaryBackground,
     marginTop:30
   },
   content: {
     flex: 1,
-    backgroundColor: '#2A1A5E',
+    backgroundColor: Colors.secondaryBackground,
     padding: 20,
   },
   header: {
@@ -124,11 +130,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    color: 'white',
+    color: Colors.textPrimary,
   },
   subtitle: {
     fontSize: 16,
-    color: 'gray',
+    color: Colors.textPrimary,
     marginHorizontal: 20,
   },
   recentlyHeader: {
@@ -146,23 +152,23 @@ const styles = StyleSheet.create({
   categoryTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: 'white',
+    color: Colors.textPrimary,
     marginLeft: 8,
   },
   noteContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#3B2C7A',
+    backgroundColor: Colors.optionBackground,
     borderRadius: 8,
     padding: 15,
     marginBottom: 10,
     elevation: 5,
-    borderColor: 'lightgray',
+    borderColor: Colors.borderColor,
     borderWidth: 0.2,
   },
   noteText: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 16,
     flex: 1,
     marginRight: 10,

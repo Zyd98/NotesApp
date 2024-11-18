@@ -1,3 +1,4 @@
+import 'intl-pluralrules';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -5,6 +6,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './src/redux/store';
 import { ActivityIndicator, View } from 'react-native';
+import './src/utils/i18n';
 
 const LoadingScreen = () => {
   return (

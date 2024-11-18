@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import Colors from '../theme';
 
 type PickerOption = {
   label: string;
@@ -86,12 +87,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#3B2C7A',
+    backgroundColor: Colors.optionBackground,
     borderRadius: 12,
     padding: 15,
   },
   selectedOptionText: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 16,
   },
   modalOverlay: {
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
   modalContainer: {
     marginHorizontal: 20,
     padding: 20,
-    backgroundColor: '#3B2C7A',
+    backgroundColor: Colors.optionBackground,
     borderRadius: 12,
   },
   option: {
@@ -112,18 +113,18 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 16,
-    color: 'white',
+    color: Colors.textPrimary,
   },
   closeButton: {
     marginTop: 20,
     paddingVertical: 10,
-    backgroundColor: '#ff6be6',
+    backgroundColor: Colors.accent,
     borderRadius: 12,
     alignItems: 'center',
   },
   closeButtonText: {
     fontSize: 16,
-    color: 'white',
+    color: Colors.textPrimary,
     fontWeight: 'bold',
   },
 });

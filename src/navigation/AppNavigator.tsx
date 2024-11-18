@@ -6,9 +6,11 @@ import HomeScreen from '../screens/HomeScreen';
 import NewNoteScreen from '../screens/NewNoteScreen';
 import SummaryScreen from '../screens/SummaryScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import EditNoteScreen from '../screens/EditNoteScreen';
+import { RootStackParamList } from '../navigation/types';
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 const MainTabs = () => (
   <Tab.Navigator
@@ -40,10 +42,12 @@ const MainTabs = () => (
   </Tab.Navigator>
 );
 
+
 const AppNavigator = () => (
   <Stack.Navigator>
     <Stack.Screen name="MainTabs" component={MainTabs} options={{ headerShown: false }} />
     <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="EditNote" component={EditNoteScreen} options={{ headerShown: false }} />
   </Stack.Navigator>
 );
 

@@ -12,7 +12,9 @@ import { useDispatch } from 'react-redux';
 import { addNote } from '../redux/reducers/notesReducer';
 import { NewNoteScreenNavigationProp } from '../navigation/types';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 import { Category } from '../enums/CategoryEnum';
+import Colors from '../theme';
 
 type Props = {
   navigation: NewNoteScreenNavigationProp;
@@ -26,17 +28,18 @@ const categories = [
 
 const NewNoteScreen: React.FC<Props> = ({ navigation }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const [categoryId, setCategoryId] = useState<Category | ''>('');
   const [content, setContent] = useState('');
 
   const handleSaveNote = () => {
     if (!categoryId || !content) {
-      Alert.alert('Error', 'Please select a category and enter content.');
+      Alert.alert(t('new_note_screen.error'), t('new_note_screen.select_category_and_content'));
       return;
     }
 
     if (content.length > 200) {
-      Alert.alert('Error', 'Content exceeds 200 characters.');
+      Alert.alert(t('new_note_screen.error'), t('new_note_screen.content_exceeds_limit'));
       return;
     }
 
@@ -56,22 +59,25 @@ const NewNoteScreen: React.FC<Props> = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color="white" />
+          <Ionicons name="arrow-back" size={24} color={Colors.textPrimary} />
         </TouchableOpacity>
-        <Text style={styles.title}>New Note</Text>
+        <Text style={styles.title}>{t('new_note_screen.new_note')}</Text>
       </View>
       <View style={styles.form}>
         <Picker
-          options={categories}
+          options={categories.map(category => ({
+            label: t(`category.${category.label}`),
+            value: category.value,
+          }))}
           selectedValue={categoryId}
           onValueChange={(value) => setCategoryId(value as Category)}
-          placeholder="Choose a category"
+          placeholder={t('new_note_screen.choose_category')}
         />
 
         <TextInput
           style={styles.input}
-          placeholder="Please input note content"
-          placeholderTextColor="white"
+          placeholder={t('new_note_screen.input_note_content')}
+          placeholderTextColor={Colors.textPrimary}
           value={content}
           onChangeText={setContent}
           multiline
@@ -79,7 +85,7 @@ const NewNoteScreen: React.FC<Props> = ({ navigation }) => {
         />
       </View>
       <TouchableOpacity style={styles.saveButton} onPress={handleSaveNote}>
-          <Text style={styles.saveButtonText}>Save</Text>
+          <Text style={styles.saveButtonText}>{t('new_note_screen.save')}</Text>
         </TouchableOpacity>
     </View>
   );
@@ -88,7 +94,7 @@ const NewNoteScreen: React.FC<Props> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1e014d',
+    backgroundColor: Colors.primaryBackground,
     paddingTop: 20,
     marginTop:30
   },
@@ -102,34 +108,34 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   title: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 24,
     fontWeight: 'bold',
   },
   form: {
     flex: 1,
-    backgroundColor: '#2A1A5E',
+    backgroundColor: Colors.secondaryBackground,
     padding: 20,
   },
   input: {
-    backgroundColor: '#3B2C7A',
+    backgroundColor: Colors.optionBackground,
     borderRadius: 12,
     padding: 15,
     height: 300,
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 16,
     textAlignVertical: 'top',
     marginBottom: 20,
   },
   saveButton: {
-    backgroundColor: '#ff6be6',
+    backgroundColor: Colors.accent,
     margin:30,
     padding: 10,
     borderRadius: 12,
     alignItems: 'center',
   },
   saveButtonText: {
-    color: 'white',
+    color: Colors.textPrimary,
     fontSize: 16,
     fontWeight: 'bold',
   },

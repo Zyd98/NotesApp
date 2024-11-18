@@ -1,0 +1,54 @@
+{
+  "home_screen": {
+    "home": "Home",
+    "recently_created_notes": "Recently Created Notes",
+    "delete_note": "Delete Note",
+    "are_you_sure_you_want_to_delete_this_note": "Are you sure you want to delete this note?",
+    "cancel": "Cancel",
+    "delete": "Delete"
+  },
+  "settings_screen": {
+    "delete_all_notes_title": "Delete All Notes",
+    "delete_all_notes_message": "Are you sure you want to delete all notes? This action cannot be undone.",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "success": "Success",
+    "all_notes_deleted": "All notes have been deleted",
+    "settings": "Settings",
+    "online_customer": "Online Customer",
+    "user_agreement": "User Agreement",
+    "privacy_policy": "Privacy Policy",
+    "change_language": "Change Language",
+    "about_us": "About Us",
+    "delete_all_notes": "Delete All Notes",
+    "select_language": "Select Language",
+    "english": "English",
+    "chinese": "中文"
+  },
+  "new_note_screen": {
+    "error": "Error",
+    "select_category_and_content": "Please select a category and enter content.",
+    "content_exceeds_limit": "Content exceeds 200 characters.",
+    "new_note": "New Note",
+    "choose_category": "Choose a category",
+    "input_note_content": "Please input note content",
+    "save": "Save"
+  },
+  "edit_note_screen": {
+    "edit_note": "Edit Note",
+    "content_cannot_be_empty": "Content cannot be empty.",
+    "save": "Save",
+    "error": "Error"
+  },
+  "summary_screen": {
+    "summary": "Summary",
+    "topic_total_records": "This topic has a total of {{count}} records.",
+    "detail": "Detail"
+  },
+  "category": {
+    "Work and Study": "Work and Study",
+    "Life": "Life",
+    "Health and Wellness": "Health and Wellness"
+  }
+}
+
