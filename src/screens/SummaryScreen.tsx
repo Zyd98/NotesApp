@@ -33,7 +33,7 @@ const SummaryScreen = () => {
       <View style={styles.cardContent}>
         <Image source={categoryIcons[categoryId as Category]} style={styles.icon} />
         <View style={styles.textContainer}>
-          <Text style={styles.cardTitle}>{t(`category.${getCategoryLabel(categoryId as Category)}`)}</Text>
+          <Text style={styles.cardTitle}>{getCategoryLabel(categoryId as Category)}</Text>
           <Text style={styles.cardSubtitle}>{t('summary_screen.topic_total_records', { count: notes.length })}</Text>
         </View>
       </View>
