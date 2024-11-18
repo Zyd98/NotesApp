@@ -7,6 +7,7 @@ import { deleteAllNotes } from '../redux/reducers/notesReducer';
 import { useTranslation } from 'react-i18next';
 import { changeLanguage } from '../utils/languageUtils';
 import Colors from '../theme';
+import commonStyles from '../styles/commonStyles';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -109,9 +110,7 @@ const SettingsScreen: React.FC<Props> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primaryBackground,
-    marginTop: 30,
+    ...commonStyles.container,
   },
   content: {
     flex: 1,
@@ -119,19 +118,14 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-    paddingTop: 20,
+    ...commonStyles.header,
   },
   backButton: {
     padding: 8,
     marginRight: 10,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.textPrimary,
+    ...commonStyles.title,
   },
   option: {
     flexDirection: 'row',
@@ -152,16 +146,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   deleteButton: {
-    backgroundColor: Colors.accent,
+    ...commonStyles.button,
     margin: 30,
-    padding: 10,
-    borderRadius: 12,
-    alignItems: 'center',
   },
   deleteButtonText: {
-    color: Colors.textPrimary,
-    fontSize: 16,
-    fontWeight: 'bold',
+    ...commonStyles.buttonText,
   },
   button: {
     padding: 10,

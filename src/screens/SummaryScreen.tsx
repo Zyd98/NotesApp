@@ -7,6 +7,7 @@ import { getCategoryLabel } from '../utils/categoryUtils';
 import { Note } from '../redux/reducers/notesReducer';
 import Colors from '../theme';
 import { useTranslation } from 'react-i18next';
+import commonStyles from '../styles/commonStyles';
 
 const SummaryScreen = () => {
   const { t } = useTranslation();
@@ -60,9 +61,7 @@ const SummaryScreen = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primaryBackground,
-    marginTop: 30,
+    ...commonStyles.container,
   },
   header: {
     flexDirection: 'row',
@@ -124,14 +123,12 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   detailButton: {
-    backgroundColor: Colors.accent,
+    ...commonStyles.button,
     paddingVertical: 5,
     paddingHorizontal: 15,
-    borderRadius: 8,
   },
   detailButtonText: {
-    color: Colors.textPrimary,
-    fontWeight: 'bold',
+    ...commonStyles.buttonText,
     fontSize: 14,
   },
 });

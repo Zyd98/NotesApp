@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { RootStackParamList } from '../navigation/types';
 import Colors from '../theme';
+import commonStyles from '../styles/commonStyles';
 
 type Props = StackScreenProps<RootStackParamList, 'EditNote'>;
 
@@ -57,24 +58,17 @@ const EditNoteScreen: React.FC<Props> = ({ route, navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primaryBackground,
-    paddingTop: 20,
-    marginTop:30
+    ...commonStyles.container,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
+    ...commonStyles.header,
   },
   backButton: {
     padding: 8,
     marginRight: 15,
   },
   title: {
-    color: Colors.textPrimary,
-    fontSize: 24,
-    fontWeight: 'bold',
+    ...commonStyles.title,
   },
   form: {
     flex: 1,
@@ -82,26 +76,15 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   input: {
-    backgroundColor: Colors.optionBackground,
-    borderRadius: 12,
-    padding: 15,
+    ...commonStyles.input,
     height: 300,
-    color: Colors.textPrimary,
-    fontSize: 16,
-    textAlignVertical: 'top',
-    marginBottom: 20,
   },
   saveButton: {
-    backgroundColor: Colors.accent,
-    margin:30,
-    padding: 10,
-    borderRadius: 12,
-    alignItems: 'center',
+    ...commonStyles.button,
+    margin: 30,
   },
   saveButtonText: {
-    color: Colors.textPrimary,
-    fontSize: 16,
-    fontWeight: 'bold',
+    ...commonStyles.buttonText,
   },
 });
 

@@ -16,6 +16,7 @@ import { getCategoryLabel } from '../utils/categoryUtils';
 import { Category } from '../enums/CategoryEnum';
 import { useTranslation } from 'react-i18next';
 import Colors from '../theme';
+import commonStyles from '../styles/commonStyles';
 
 type Props = {
   navigation: HomeScreenNavigationProp;
@@ -112,9 +113,7 @@ const HomeScreen: React.FC<Props> = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: Colors.primaryBackground,
-    marginTop:30
+    ...commonStyles.container,
   },
   content: {
     flex: 1,
@@ -128,9 +127,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.textPrimary,
+    ...commonStyles.title,
   },
   subtitle: {
     fontSize: 16,

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import Colors from '../theme';
+import commonStyles from '../styles/commonStyles';
 
 type PickerOption = {
   label: string;
@@ -116,16 +117,11 @@ const styles = StyleSheet.create({
     color: Colors.textPrimary,
   },
   closeButton: {
+    ...commonStyles.button,
     marginTop: 20,
-    paddingVertical: 10,
-    backgroundColor: Colors.accent,
-    borderRadius: 12,
-    alignItems: 'center',
   },
   closeButtonText: {
-    fontSize: 16,
-    color: Colors.textPrimary,
-    fontWeight: 'bold',
+    ...commonStyles.buttonText,
   },
 });
 
