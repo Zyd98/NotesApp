@@ -59,7 +59,14 @@ const NewNoteScreen: React.FC<Props> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+        <TouchableOpacity
+          onPress={() => {
+            setCategoryId('');
+            setContent('');
+            navigation.goBack();
+          }}
+          style={styles.backButton}
+        >
           <Ionicons name="arrow-back" size={24} color={Colors.textPrimary} />
         </TouchableOpacity>
         <Text style={styles.title}>{t('new_note_screen.new_note')}</Text>

@@ -27,7 +27,7 @@ const Picker: React.FC<PickerProps> = ({
   options,
   selectedValue,
   onValueChange,
-  placeholder = 'Choose a category',
+  placeholder,
 }) => {
   const [isModalVisible, setModalVisible] = useState(false);
 
